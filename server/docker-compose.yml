@@ -5,8 +5,8 @@ services:
       build:
         context: .
         dockerfile: Dockerfile
-      image: myapp-server-img
-      container_name: myapp-node-express
+      image: examanager-server-img
+      container_name: examanager-node-express
       volumes:
        - .:/usr/src/app
        - /usr/src/app/node_modules
@@ -21,6 +21,6 @@ services:
         - MONGO_DB=$MONGO_DB
     mongo:
       image: mongo
-      container_name: myapp-mongodb
+      container_name: examanager-mongodb
       ports:
         - 27017:27017
