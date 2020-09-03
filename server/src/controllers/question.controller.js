@@ -2,12 +2,34 @@ const questionControl = {};
 const questionModel =require("../models/question.model");
 
 questionControl.getQuestions = async (req,res)=>{
-    const questions= await questionModel.find();
+    const questions= await questionModel.find({} , function(err, result){
+        if(err){
+            res.status(400).send({
+                'success': false,
+                'error': err.message
+            });
+        }
+        res.status(200).send({
+            'success': true,
+            'data': result
+        });
+    });
     res.json(questions);
 };
 
 questionControl.getQuestion = async (req,res)=>{
-    const questions=await questionModel.findById(req.params.id);
+    const questions=await questionModel.findById(req.params.id,function (err, result) {
+        if(err){
+             res.status(400).send({
+               success: false,
+               error: err.message
+             });
+        }
+        res.status(200).send({
+            success: true,
+            data: result
+        });
+     });
     console.log(req.params.id);
     res.json(questions);
 };
@@ -23,13 +45,37 @@ questionControl.createQuestions = async (req,res)=>{
         answerOptions:answerOptions,
         correctAnswer:correctAnswer,
     })
-    await questions.save();
+    await questions.save({}, function(err, result) {
+        if(err){
+            res.status(400).send({
+              success: false,
+              error: err.message
+            });
+        }
+          res.status(201).send({
+            success: true,
+            data: result,
+            message: "Question created successfully"
+          });
+      });
     res.json({message: "question saved"});
 };
 
 questionControl.deleteQuestion = async (req,res)=>{
     console.log(req.params.id);
-    await questionModel.findByIdAndDelete(req.params.id);
+    await questionModel.findByIdAndDelete(req.params.id, function(err, result){
+        if(err){
+          res.status(400).send({
+            success: false,
+            error: err.message
+          });
+        }
+      res.status(200).send({
+        success: true,
+        data: result,
+        message: "Post deleted successfully"
+      });
+    });
     res.json({message: "question deleted"});
 };
 
@@ -43,6 +89,18 @@ questionControl.updateQuestion = async (req,res)=>{
         difficulty:difficulty,
         answerOptions:answerOptions,
         correctAnswer:correctAnswer,
+    },function (err, result) {
+        if(err){
+            res.status(400).send({
+               success: false,
+              error: err.message
+              });
+        }
+        res.status(200).send({
+          success: true,
+          data: result,
+          message: "Question updated successfully"
+          });
     });
     res.json({message: "question Updated"});
 };
