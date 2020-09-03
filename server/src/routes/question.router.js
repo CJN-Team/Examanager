@@ -1,6 +1,6 @@
 const express = require('express');
 const questionsRouter = express.Router();
-const questions = require('../models/questions.model'); // questions model
+const questions = require('../models/question.model'); // questions model
 
 /* Get all questionss */
 questionsRouter.get('/', (req, res, next) => {
