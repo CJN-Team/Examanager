@@ -18,7 +18,7 @@ const questionSchema=new Schema({
         required:true
     },
     difficulty: {
-        type:Int32Array,
+        type:Number,
         required:true
     },
     answerOptions: {
@@ -26,7 +26,7 @@ const questionSchema=new Schema({
         required:false
     },
     correctAnswer: {
-        type:Int32Array,
+        type:Number,
         require:false
     }
 }
