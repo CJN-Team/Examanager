@@ -9,7 +9,7 @@ userControl.getUsers = async (req,res)=>{
                 'error': err.message
             });
         }
-        res.status(200).send({
+        return res.status(200).send({
             'success': true,
             'data': result
         });
@@ -25,7 +25,7 @@ userControl.getUser = async (req,res)=>{
                error: err.message
              });
         }
-        res.status(200).send({
+        return res.status(200).send({
             success: true,
             data: result
         });
@@ -52,7 +52,7 @@ userControl.createUsers = async (req,res)=>{
               error: err.message
             });
         }
-          res.status(201).send({
+        return res.status(201).send({
             success: true,
             data: result,
             message: "Question created successfully"
@@ -70,7 +70,7 @@ userControl.deleteUsers = async (req,res)=>{
             error: err.message
           });
         }
-      res.status(200).send({
+        return res.status(200).send({
         success: true,
         data: result,
         message: "Post deleted successfully"
@@ -96,7 +96,7 @@ userControl.updateUser = async (req,res)=>{
               error: err.message
               });
         }
-        res.status(200).send({
+        return res.status(200).send({
           success: true,
           data: result,
           message: "Question updated successfully"

@@ -9,7 +9,7 @@ questionControl.getQuestions = async (req,res)=>{
                 'error': err.message
             });
         }
-        res.status(200).send({
+        return res.status(200).send({
             'success': true,
             'data': result
         });
@@ -25,7 +25,7 @@ questionControl.getQuestion = async (req,res)=>{
                error: err.message
              });
         }
-        res.status(200).send({
+        return res.status(200).send({
             success: true,
             data: result
         });
@@ -52,7 +52,7 @@ questionControl.createQuestions = async (req,res)=>{
               error: err.message
             });
         }
-          res.status(201).send({
+        return res.status(201).send({
             success: true,
             data: result,
             message: "Question created successfully"
@@ -70,7 +70,7 @@ questionControl.deleteQuestion = async (req,res)=>{
             error: err.message
           });
         }
-      res.status(200).send({
+    return res.status(200).send({
         success: true,
         data: result,
         message: "Post deleted successfully"
@@ -96,7 +96,7 @@ questionControl.updateQuestion = async (req,res)=>{
               error: err.message
               });
         }
-        res.status(200).send({
+        return res.status(200).send({
           success: true,
           data: result,
           message: "Question updated successfully"
