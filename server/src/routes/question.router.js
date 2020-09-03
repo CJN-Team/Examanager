@@ -38,9 +38,14 @@ questionsRouter.get("/:questions_id", (req, res, next) => {
 /* Add Single questions */
 questionsRouter.post("/", (req, res, next) => {
   let newquestions = {
-    title: req.body.title,
-    body: req.body.body,
-    author: req.body.author
+    question: req.body.question,
+    category: req.body.category,
+    asignature: req.body.asignature,
+    thematic: req.body.thematic,
+    difficulty: req.body.difficulty,
+    author: req.body.author,
+    answerOptions: req.body.answerOptions,
+    correctAnswer: req.body.correctAnswer,
   };
    questions.create(newquestions, function(err, result) {
     if(err){

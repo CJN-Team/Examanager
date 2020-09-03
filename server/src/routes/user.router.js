@@ -38,9 +38,13 @@ usersRouter.get("/:users_id", (req, res, next) => {
 /* Add Single users */
 usersRouter.post("/", (req, res, next) => {
   let newusers = {
-    title: req.body.title,
-    body: req.body.body,
-    author: req.body.author
+    profile: req.body.profile,
+    idType: req.body.idType,
+    name: req.body.name,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    birthDate: req.body.birthDate,
+    photo: req.body.photo,
   };
    users.create(newusers, function(err, result) {
     if(err){
