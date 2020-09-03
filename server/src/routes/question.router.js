@@ -1,4 +1,4 @@
-const {getQuestions,createQuestions,deleteQuestion,getQuestion,updateQuestion} = require("../controllers/question.controller.controller");
+const {getQuestions,createQuestions,deleteQuestion,getQuestion,updateQuestion} = require("../controllers/question.controller");
 const { Router } = require("express");
 const router = Router();
 
