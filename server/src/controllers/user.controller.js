@@ -45,17 +45,17 @@ userControl.createUsers = async (req,res)=>{
         birthDate:birthDate,
         photo:photo,
     })
-    await user.save({}, function(err, result) {
+    await user.create({}, function(err, result) {
         if(err){
             return res.status(400).send({
               success: false,
               error: err.message
             });
         }
-        return res.status(201).send({
+        return res.status(200).send({
             success: true,
             data: result,
-            message: "Question created successfully"
+            message: "User created successfully"
           });
       });
     res.json({message: "User saved"});
@@ -73,7 +73,7 @@ userControl.deleteUsers = async (req,res)=>{
         return res.status(200).send({
         success: true,
         data: result,
-        message: "Post deleted successfully"
+        message: "User deleted successfully"
       });
     });
     res.json({message: "User deleted"});
@@ -99,7 +99,7 @@ userControl.updateUser = async (req,res)=>{
         return res.status(200).send({
           success: true,
           data: result,
-          message: "Question updated successfully"
+          message: "User updated successfully"
           });
     });
     res.json({message: "User Updated"});
