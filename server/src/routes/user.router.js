@@ -1,22 +1,14 @@
-const express = require('express');
-const userRouter = express.Router();
-const user = require('../models/user.model'); // user model
+const {getUsers,createUsers,deleteUsers,getUser,updateUser} = require("../controllers/user.controller");
+const { Router } = require("express");
+const router = Router();
 
-/* Get all users */
-userRouter.get('/', (req, res, next) => {
-    user.find({} , function(err, result){
-        if(err){
-            res.status(400).send({
-                'success': false,
-                'error': err.message
-            });
-        }
-        res.status(200).send({
-            'success': true,
-            'data': result
-        });
-    });
-});
+router.route("/")
+    .get(getUsers)
+    .post(createUsers);
 
+router.route("/:id")
+    .delete(deleteUsers)
+    .get(getUser)
+    .put(updateUser);
 
-module.exports = userRouter;
+module.exports = router;

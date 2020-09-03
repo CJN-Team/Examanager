@@ -1,8 +1,5 @@
 const bodyParser = require('body-parser');
 
-// Routes
-const postRouter = require('./src/routes/post.router');
-
 // Our DB Configuration
 require('./src/database');
 
@@ -28,7 +25,9 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.use('/posts', postRouter);
+app.use('/posts', require('./src/routes/post.router'));
+app.use('/questions', require('./src/routes/question.router'));
+app.use('/users', require('./src/routes/user.router'));
 
 // will redirect all the non-api routes to react frontend
 router.use(function(req, res) {
