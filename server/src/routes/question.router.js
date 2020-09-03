@@ -36,7 +36,7 @@ questionsRouter.get("/:questions_id", (req, res, next) => {
 
 
 /* Add Single questions */
-questionsRouter.questions("/", (req, res, next) => {
+questionsRouter.post("/", (req, res, next) => {
   let newquestions = {
     title: req.body.title,
     body: req.body.body,

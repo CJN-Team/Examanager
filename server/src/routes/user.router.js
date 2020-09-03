@@ -36,7 +36,7 @@ usersRouter.get("/:users_id", (req, res, next) => {
 
 
 /* Add Single users */
-usersRouter.users("/", (req, res, next) => {
+usersRouter.post("/", (req, res, next) => {
   let newusers = {
     title: req.body.title,
     body: req.body.body,
