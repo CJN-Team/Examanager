@@ -4,7 +4,7 @@ const userModel =require("../models/user.model");
 userControl.getUsers = async (req,res)=>{
     const users= await userModel.find({} , function(err, result){
         if(err){
-            res.status(400).send({
+            return res.status(400).send({
                 'success': false,
                 'error': err.message
             });
@@ -20,7 +20,7 @@ userControl.getUsers = async (req,res)=>{
 userControl.getUser = async (req,res)=>{
     const user=await userModel.findById(req.params.id,function (err, result) {
         if(err){
-             res.status(400).send({
+            return res.status(400).send({
                success: false,
                error: err.message
              });
@@ -47,7 +47,7 @@ userControl.createUsers = async (req,res)=>{
     })
     await user.save({}, function(err, result) {
         if(err){
-            res.status(400).send({
+            return res.status(400).send({
               success: false,
               error: err.message
             });
@@ -65,7 +65,7 @@ userControl.deleteUsers = async (req,res)=>{
     console.log(req.params.id);
     await userModel.findByIdAndDelete(req.params.id, function(err, result){
         if(err){
-          res.status(400).send({
+            return res.status(400).send({
             success: false,
             error: err.message
           });
@@ -91,7 +91,7 @@ userControl.updateUser = async (req,res)=>{
         photo:photo,
     },function (err, result) {
         if(err){
-            res.status(400).send({
+            return res.status(400).send({
                success: false,
               error: err.message
               });
