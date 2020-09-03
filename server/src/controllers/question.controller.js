@@ -7,14 +7,14 @@ questionControl.getQuestions = async (req,res)=>{
 };
 
 questionControl.getQuestion = async (req,res)=>{
-    const question=await questionModel.findById(req.params.id);
+    const questions=await questionModel.findById(req.params.id);
     console.log(req.params.id);
-    res.json(question);
+    res.json(questions);
 };
 
 questionControl.createQuestions = async (req,res)=>{
     const {question,category,asignature,thematic,difficulty,answerOptions,correctAnswer} = req.body;
-    const question = new questionModel({
+    const questions = new questionModel({
         question:question,
         category:category,
         asignature:asignature,
@@ -23,7 +23,7 @@ questionControl.createQuestions = async (req,res)=>{
         answerOptions:answerOptions,
         correctAnswer:correctAnswer,
     })
-    await question.save();
+    await questions.save();
     res.json({message: "question saved"});
 };
 
