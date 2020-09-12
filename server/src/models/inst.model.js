@@ -1,10 +1,6 @@
 const {Schema, model} = require("mongoose");
 
 const instSchema=new Schema({
-    idType: {
-        type:String,
-        required:true
-    },
     name: {
         type:String,
         required:true
