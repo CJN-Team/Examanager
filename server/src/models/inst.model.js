@@ -21,6 +21,10 @@ const instSchema=new Schema({
         type:String,
         required:true
     },
+    users: {
+        type: Array,
+        required: false
+    }
 });
 
 module.exports= model("Inst",instSchema);
