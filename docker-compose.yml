@@ -5,8 +5,6 @@ services:
     build:
       context: ./examanager-server # Use an image built from the specified dockerfile in the current directory.
       dockerfile: Dockerfile
-    volumes:
-        - ./server/:/go/src/examanager-server
     ports:
         - 8080:8080
     depends_on:
