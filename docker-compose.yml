@@ -29,10 +29,6 @@ services:
     image: examanager-client
     stdin_open: true
     container_name: examanager-react-client
-    command: yarn start
-    volumes:
-      - ./examanager-client/:/usr/app
-      - /usr/app/node_modules
     depends_on:
       - examanager-server
     ports:
