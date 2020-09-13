@@ -2,11 +2,11 @@ version: '3.3'
 
 services:
   examanager-server:
-    image: golang:1.6.1-alpine
+    build:
+      context: ./examanager-server # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
     volumes:
         - ./server/:/go/src/examanager-server
-    working_dir: /go/src/examanager-server
-    command: go run main.go
     ports:
         - 8080:8080
     depends_on:
@@ -16,7 +16,6 @@ services:
         - MONGO_HOSTNAME=$MONGO_HOSTNAME
         - MONGO_PORT=$MONGO_PORT
         - MONGO_DB=$MONGO_DB
-
   mongo:
     image: mongo
     volumes:
@@ -27,14 +26,14 @@ services:
 
   client:
     build:
-      context: ./client
+      context: ./examanager-client
       dockerfile: Dockerfile
     image: examanager-client
     stdin_open: true
     container_name: examanager-react-client
     command: yarn start
     volumes:
-      - ./client/:/usr/app
+      - ./examanager-client/:/usr/app
       - /usr/app/node_modules
     depends_on:
       - examanager-server

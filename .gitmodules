@@ -1,0 +1,6 @@
+[submodule "examanager-client"]
+	path = examanager-client
+	url = https://github.com/CJN-Team/examanager-client
+[submodule "examanager-server"]
+	path = examanager-server
+	url = https://github.com/CJN-Team/examanager-server
