@@ -1,6 +1,7 @@
 version: '3.3'
 
 services:
+
   examanager-server:
     build:
       context: ./examanager-server # Use an image built from the specified dockerfile in the current directory.
@@ -14,6 +15,7 @@ services:
         - MONGO_HOSTNAME=$MONGO_HOSTNAME
         - MONGO_PORT=$MONGO_PORT
         - MONGO_DB=$MONGO_DB
+
   mongo:
     image: mongo
     volumes:
